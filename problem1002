@@ -1,16 +1,21 @@
-#https://www.acmicpc.net/problem/1002
-
 import math
-A = [1,1,1,1,1,5]
+A = [3,1,1,1,1,5]
 
 def sloution(A):
-    if len(A)<6:
-        return -1
-    elif abs((A[0]-A[3])^2+(A[1]-A[4])^2) == A[2]+A[5]:
-        return 1
-    elif abs((A[0]-A[3])^2+(A[1]-A[4])^2) < A[2]+A[5]:
+    d= abs((A[0]-A[3])^2+(A[1]-A[4])^2)
+    r1 = A[2]
+    r2 = A[5]
+    if r2-r1 <d and d< r1+r2: #원이 두점에서 만날때
         return 2
-    else:
+    elif d== r1+r2: #원이 외접하는 경우
+        return 1
+    elif d==r2-r1 and d !=0: #원이 내접하는 경우
+        return 1
+    elif d<r2-r1: #하나의 원이 다른원 포함(만나지 않는다)
         return 0
+    elif d>r1+r2: #두 원이 멀리떨어져있는 경우(만나지 않는다)
+        return 0
+    elif d==0 and r1==r2: #두 원이 일치하는 경우(무수히 많은 점에서 만난다)
+        return -1
 
 print(sloution(A))
