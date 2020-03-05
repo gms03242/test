@@ -1,0 +1,16 @@
+#https://www.acmicpc.net/problem/1002
+
+import math
+A = [1,1,1,1,1,5]
+
+def sloution(A):
+    if len(A)<6:
+        return -1
+    elif abs((A[0]-A[3])^2+(A[1]-A[4])^2) == A[2]+A[5]:
+        return 1
+    elif abs((A[0]-A[3])^2+(A[1]-A[4])^2) < A[2]+A[5]:
+        return 2
+    else:
+        return 0
+
+print(sloution(A))
